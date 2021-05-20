@@ -1,6 +1,10 @@
 const express = require("express");
 const routes = express.Router();
 
+const AddressController = require("./controllers/AddressController");
+const UserController = require("./controllers/UserController");
+const DataController = require("./controllers/DataController");
+
 const familiaPera = [
   {
     id: 0,

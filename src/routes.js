@@ -33,7 +33,7 @@ const familiaPera = [
 ];
 
 routes.get("/home", (req, res) => {
-  res.json(familiaPera);
+  res.status(200).json(familiaPera);
 });
 
 routes.post("/home", (req, res) => {
@@ -61,11 +61,6 @@ routes.put("/home/:user_Id", (req, res) => {
 
 routes.post("/home", (req, res) => {
   res.send(familiaPera);
-});
-
-routes.post("/home", (req, res) => {
-  console.log(req);
-  res.send("oi");
 });
 
 module.exports = routes;

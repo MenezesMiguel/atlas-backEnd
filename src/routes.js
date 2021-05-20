@@ -31,7 +31,6 @@ const familiaPera = [
     name: "Gilberto Assis",
   },
 ];
-
 routes.get("/home", (req, res) => {
   res.status(200).json(familiaPera);
 });

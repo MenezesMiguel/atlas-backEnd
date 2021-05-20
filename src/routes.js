@@ -14,8 +14,8 @@ routes.delete("/users/:user_id", UserController.delete);
 // //address
 // routes.get("/address/:address_id", AddressController.getById);
 routes.post("/address", AddressController.create);
-// routes.put("/address/:address_id", AddressController.update);
-// routes.delete("/address/:address_id", AddressController.delete);
+routes.put("/address/:address_id", AddressController.update);
+routes.delete("/address/:address_id", AddressController.delete);
 
 // //data
 // routes.get("/data/:data_id", DataController.getById);

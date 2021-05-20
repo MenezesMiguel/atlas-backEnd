@@ -17,14 +17,45 @@ module.exports = {
   },
   async getByUser(request, response) {
     try {
-    } catch (error) {}
+    } catch (error) {
+      console.warn("Address creation failed:", error);
+
+      return response.status(500).json({
+        notification: "Internal server error while trying to create address",
+      });
+    }
   },
   async update(request, response) {
     try {
-    } catch (error) {}
+      const { address_id } = request.params;
+      const newAddress = request.body;
+      await Address.updateById(address_id, newAddress);
+
+      return response
+        .status(200)
+        .json({ notification: "Endereco atualizado com sucesso!" });
+    } catch (error) {
+      console.warn("Address update failed:", error);
+
+      return response.status(500).json({
+        notification: "Internal server error while trying to update address",
+      });
+    }
   },
   async delete(request, response) {
     try {
-    } catch (error) {}
+      const { address_id } = request.params;
+      await Address.deleteById(address_id);
+
+      return response
+        .status(200)
+        .json({ notification: "Endereco deletado com sucesso!" });
+    } catch (error) {
+      console.warn("Address delete failed:", error);
+
+      return response.status(500).json({
+        notification: "Internal server error while trying to delete address",
+      });
+    }
   },
 };

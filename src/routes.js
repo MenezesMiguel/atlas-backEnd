@@ -5,65 +5,20 @@ const AddressController = require("./controllers/AddressController");
 const UserController = require("./controllers/UserController");
 const DataController = require("./controllers/DataController");
 
-const familiaPera = [
-  {
-    id: 0,
-    name: "Arthur Braga",
-  },
-  {
-    id: 1,
-    name: "Joaquim Jose",
-  },
-  {
-    id: 2,
-    name: "Miguel Menezes",
-  },
-  {
-    id: 3,
-    name: "Leticia Lopes",
-  },
-  {
-    id: 4,
-    name: "Maria Joaquina",
-  },
-  {
-    id: 5,
-    name: "Joao Paulo",
-  },
-  {
-    id: 6,
-    name: "Gilberto Assis",
-  },
-];
-routes.get("/home", (req, res) => {
-  res.status(200).json(familiaPera);
-});
+//users
+routes.get("/users/:user_id", UserController.getById);
+routes.post("/users", UserController.create);
+routes.put("/users/:user_id", UserController.update);
+routes.delete("/users/:user_id", UserController.delete);
 
-routes.post("/home", (req, res) => {
-  const newUser = req.body;
+//address
+routes.get("/address/:address_id", UserController.getById);
+routes.post("/address", UserController.create);
+routes.put("/address/:address_id", UserController.update);
+routes.delete("/address/:address_id", UserController.delete);
 
-  familiaPera.push(newUser);
-
-  res.json({ message: "Sucess" });
-});
-
-routes.put("/home/:user_Id", (req, res) => {
-  const { userId } = req.params;
-  const newFields = req.body;
-
-  let selectedIndex;
-  let selected = familiaPera.find((user, index) => {
-    selectedIndex = index;
-    return user.id === userId;
-  });
-  selected = { ...selected, ...newFields };
-
-  familiaPera[selectedIndex] = selected;
-  res.json({ message: "Sucess" });
-});
-
-routes.post("/home", (req, res) => {
-  res.send(familiaPera);
-});
-
-module.exports = routes;
+//data
+routes.get("/data/:data_id", UserController.getById);
+routes.post("/data", UserController.create);
+routes.put("/data/:data_id", UserController.update);
+routes.delete("/data/:data_id", UserController.delete);

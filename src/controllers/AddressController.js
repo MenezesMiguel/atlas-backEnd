@@ -29,7 +29,10 @@ module.exports = {
     try {
       const { address_id } = request.params;
       const newAddress = request.body;
-      await Address.updateById(address_id, newAddress);
+      const result = await Address.updateById(address_id, newAddress);
+
+      if (result === 0)
+      return response.status(400).json({ notification: "Address not found" });
 
       return response
         .status(200)
@@ -45,7 +48,10 @@ module.exports = {
   async delete(request, response) {
     try {
       const { address_id } = request.params;
-      await Address.deleteById(address_id);
+      const result = await Address.deleteById(address_id);
+
+      if (result === 0)
+        return response.status(400).json({ notification: "Address not found" });
 
       return response
         .status(200)

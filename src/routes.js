@@ -19,8 +19,8 @@ routes.delete("/address/:address_id", AddressController.delete);
 
 // //data
 // routes.get("/data/:data_id", DataController.getById);
-// routes.post("/data", DataController.create);
-// routes.put("/data/:data_id", DataController.update);
-// routes.delete("/data/:data_id", DataController.delete);
+routes.post("/data", DataController.create);
+routes.put("/data/:data_id", DataController.update);
+routes.delete("/data/:data_id", DataController.delete);
 
 module.exports = routes;

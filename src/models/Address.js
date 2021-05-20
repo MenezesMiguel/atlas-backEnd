@@ -1,12 +1,12 @@
 const { v4: uuidv4 } = require("uuid");
 const connection = require("../database/connection");
 module.exports = {
-  async create() {
+  async create(address) {
     const address_id = uuidv4();
     address.address_id = address_id;
 
     const result = await connection("address").insert(address);
-    return result;
+    return address_id;
   },
 
   async getById({ address_id }) {

@@ -4,11 +4,11 @@ module.exports = {
   async create(request, response) {
     try {
       const newAddress = request.body;
-      const result = await Address.creat(newAddress);
+      const result = await Address.create(newAddress);
 
-      return response.status(200).json(result);
+      return response.status(200).json({ address_id: result });
     } catch (error) {
-      console.warn("Note creation failed:", error);
+      console.warn("Address creation failed:", error);
 
       return response.status(500).json({
         notification: "Internal server error while trying to create address",

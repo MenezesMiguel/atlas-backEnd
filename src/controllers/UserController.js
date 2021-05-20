@@ -1,5 +1,4 @@
 const User = require("../models/User");
-const { delete } = require("../routes");
 
 const familiaPera = [
   {

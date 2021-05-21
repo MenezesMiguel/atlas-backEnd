@@ -15,7 +15,7 @@ module.exports = {
       });
     }
   },
-  async getByUser(request, response) {
+  async getById(request, response) {
     try {
     } catch (error) {
       console.warn("Address creation failed:", error);

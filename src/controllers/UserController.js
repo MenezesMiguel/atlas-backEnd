@@ -1,35 +1,5 @@
 const UserModel = require("../models/UserModel");
 
-const familiaPera = [
-  {
-    id: 0,
-    name: "Arthur Braga",
-  },
-  {
-    id: 1,
-    name: "Joaquim Jose",
-  },
-  {
-    id: 2,
-    name: "Miguel Menezes",
-  },
-  {
-    id: 3,
-    name: "Leticia Lopes",
-  },
-  {
-    id: 4,
-    name: "Maria Joaquina",
-  },
-  {
-    id: 5,
-    name: "Joao Paulo",
-  },
-  {
-    id: 6,
-    name: "Gilberto Assis",
-  },
-];
 module.exports = {
   async create(request, response) {
     try {
@@ -61,9 +31,11 @@ module.exports = {
     try {
       const { user_id } = request.params;
       const user = request.body;
-      const result = await User.updateById(user_id, user);
+      const result = await UserModel.updateById(user_id, user);
+      if (result === 0)
+      return response.status(400).json({ notification: "Cadastro not found" });
 
-      return response.status(200).json(result);
+      return response.status(200).json("Cadastro atualizado com sucesso!");
     } catch (err) {
       console.log("User update failed: " + err);
       return response.status(500).json({
@@ -72,16 +44,17 @@ module.exports = {
     }
   },
   async delete(request, response) {
-      try {
-          const { user_id } = request.params;
-
-          const result = await User.deleteById(user_id);
-          return response.status(200).json(result);
+    try {
+      const { user_id } = request.params;
+      const result = await UserModel.deleteById(user_id);
+      if (result === 0)
+        return response.status(400).json({ notification: "User not found" });
+      return response.status(200).json(result);
     } catch (err) {
-          console.log("User delete failed: " + err);
-          return response.status(500).json({
-            notification: "Internal server error while trying to delete user",
-        });
+      console.log("User delete failed: " + err);
+      return response.status(500).json({
+        notification: "Internal server error while trying to delete user",
+      });
     }
-}
+  },
 };

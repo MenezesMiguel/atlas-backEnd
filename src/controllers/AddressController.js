@@ -16,12 +16,15 @@ module.exports = {
     }
   },
   async getById(request, response) {
-    try {
-    } catch (error) {
-      console.warn("Address creation failed:", error);
+        try {
+      const { address_id } = request.params;
+      const result = await User.getById(address_id);
 
+      return response.status(200).json(result);
+    } catch (err) {
+      console.log("User getById failed: " + err);
       return response.status(500).json({
-        notification: "Internal server error while trying to create address",
+        notification: "Internal server error while trying to get user",
       });
     }
   },

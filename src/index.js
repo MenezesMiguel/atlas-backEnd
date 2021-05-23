@@ -1,3 +1,5 @@
+require("dotenv").config(); //TEM QUE SER A PRIMEIRA LINHA
+
 const express = require("express");
 const { errors } = require("celebrate");
 

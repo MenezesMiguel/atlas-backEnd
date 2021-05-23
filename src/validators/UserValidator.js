@@ -16,13 +16,20 @@ module.exports = {
     })
   }),
   update: celebrate({
-    [Segments.BODY]: Joi.object().keys({
-        
-    })
+    [Segments.PARAMS]: Joi.object().keys({
+      user_id: Joi.string().required(),
+    }),
+    [Segments.BODY]: Joi.object()
+      .keys({
+        email: Joi.string().optional(),
+        nome: Joi.string().optional(),
+        nascimento: Joi.string().optional(),
+      })
+    .min(1),
   }),
   delete: celebrate({
-    [Segments.BODY]: Joi.object().keys({
-        
-    })
+    [Segments.PARAMS]: Joi.object().keys({
+        user_id: Joi.string().required(),
+    }),
   }),
 };

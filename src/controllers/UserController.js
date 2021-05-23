@@ -6,7 +6,7 @@ module.exports = {
       const user = request.body;
 
       const result = await UserModel.create(user);
-      return response.status(200).json(result);
+      return response.status(200).json("user_id: " + result);
     } catch (err) {
       console.log("User creation failed: " + err);
       return response.status(500).json({
@@ -49,7 +49,7 @@ module.exports = {
       const result = await UserModel.deleteById(user_id);
       if (result === 0)
         return response.status(400).json({ notification: "User not found" });
-      return response.status(200).json(result);
+      return response.status(200).json("Usuario deletado com sucesso!");
     } catch (err) {
       console.log("User delete failed: " + err);
       return response.status(500).json({

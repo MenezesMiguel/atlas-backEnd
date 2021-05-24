@@ -14,7 +14,17 @@ routes.post("/login", SessionController.signIn);
 //users
 routes.get("/users/:user_id", UserValidator.getById, UserController.getById);
 routes.post("/users", UserValidator.create, UserController.create);
-routes.put("/users/:user_id", UserValidator.update, UserController.update);
-routes.delete("/users/:user_id", UserValidator.delete, UserController.delete);
+routes.put(
+  "/users/:user_id",
+  UserValidator.update,
+  auth.authenticateToken,
+  UserController.update
+);
+routes.delete(
+  "/users/:user_id",
+  UserValidator.delete,
+  auth.authenticateToken,
+  UserController.delete
+);
 
 module.exports = routes;

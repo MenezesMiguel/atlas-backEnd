@@ -4,14 +4,16 @@ module.exports = {
   create: celebrate({
     [Segments.BODY]: Joi.object().keys({
         firebase_id: Joi.string().required(),
-        email: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().min(6).required(),
         nome: Joi.string().required(),
         nascimento: Joi.string().required(),
         cpf: Joi.string().required(),
     })
   }),
   getById: celebrate({
-    [Segments.BODY]: Joi.object().keys({
+    [Segments.PARAMS]: Joi.object().keys({
+      user_id: Joi.string().required(),
         
     })
   }),

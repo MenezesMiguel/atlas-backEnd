@@ -9,20 +9,16 @@ const firebaseConfig = {
   storageBucket: process.env.STORAGE_BUCKET,
   messagingSenderId: process.env.MESSAGING_SENDER_ID,
 };
-
-firebase.initializeApp({ firebaseConfig });
+console.log("firebaseConfig", firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 module.exports = {
   async createNewUser(email, password) {
-    try {
       const result = await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password);
 
       return result.user.uid;
-    } catch (error) {
-      console.warn(error);
-    }
   },
 
   async login(email, senha) {

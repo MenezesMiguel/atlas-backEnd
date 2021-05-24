@@ -19,6 +19,9 @@ module.exports = {
         .createUserWithEmailAndPassword(email, password);
 
       return result.user.uid;
+
+
+      
   },
 
   async login(email, senha) {

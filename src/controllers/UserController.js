@@ -14,7 +14,6 @@ module.exports = {
       return response.status(200).json("user_id: " + result);
     } catch (err) {
       console.log("User creation failed: " + err);
-      console.log(" " + process.env.API_KEY);
       return response.status(500).json({
         notification: "Internal server error while trying to create user",
       });

@@ -6,6 +6,10 @@ exports.up = function (knex) {
       table.string("nome").notNullable();
       table.string("nascimento").notNullable();
       table.string("cpf").notNullable();
+      table.string("endereco").notNullable();
+      table.string("cidade").notNullable();
+      table.string("estado").notNullable();
+      table.string("cep").notNullable();
   });
 };
 

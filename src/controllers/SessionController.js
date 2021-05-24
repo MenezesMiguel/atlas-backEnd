@@ -10,11 +10,12 @@ module.exports = {
       try {
         uid = await Firebase.login(email, password);
       } catch (error) {
+        console.warn(error);
         return response
           .status(403)
           .json({ notification: "Invalid Credentials" });
       }
-      const user = await UserModel.getById({ firebase_id: uid });
+      const user = await UserModel.getByFields({ firebase_id: uid });
 
       const accessToken = jwt.sign({ user }, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: "30d",

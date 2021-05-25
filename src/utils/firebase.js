@@ -20,10 +20,10 @@ module.exports = {
       return result.user.uid;
   },
 
-  async login(email, senha) {
+  async login(email, password) {
     const result = await firebase
       .auth()
-      .signInWithEmailAndPassword(email, senha);
+      .signInWithEmailAndPassword(email, password);
     return result.user.uid;
   },
 };

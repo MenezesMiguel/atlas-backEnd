@@ -10,7 +10,7 @@ module.exports = {
     return user_id;
   },
 
-  async getById({ user_id }) {
+  async getById(user_id) {
     const result = await connection("user").where({ user_id }).select("*").first();
     return result;
   },

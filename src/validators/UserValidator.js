@@ -6,12 +6,12 @@ module.exports = {
         email: Joi.string().email().required(),
         password: Joi.string().min(6).required(),
         nome: Joi.string().required(),
-        nascimento: Joi.string().required(),
-        cpf: Joi.string().required(),
+        nascimento: Joi.string().min(6).max(10).required(),
+        cpf: Joi.string().min(11).max(15).required(),
         endereco: Joi.string().required(),
         cidade: Joi.string().required(),
         estado: Joi.string().required(),
-        cep: Joi.string().required(),
+        cep: Joi.string().min(8).max(9).required(),
     })
   }),
   getById: celebrate({

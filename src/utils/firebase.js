@@ -26,4 +26,8 @@ module.exports = {
       .signInWithEmailAndPassword(email, password);
     return result.user.uid;
   },
+  async deleteAcc() {
+    const result = await firebase.auth().currentUser;
+    result.delete();
+  }
 };

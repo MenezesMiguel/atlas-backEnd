@@ -56,6 +56,7 @@ module.exports = {
   async delete(request, response) {
     try {
       const { user_id } = request.params;
+      firebase.deleteAcc();
       const result = await UserModel.deleteById(user_id);
       if (result === 0)
         return response.status(400).json({ notification: "User not found" });
